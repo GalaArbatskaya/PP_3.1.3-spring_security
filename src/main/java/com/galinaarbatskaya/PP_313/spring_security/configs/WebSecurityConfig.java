@@ -14,11 +14,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @EnableWebFluxSecurity
 public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
-    private final SuccessUserHandler successUserHandler;
+    private final LoginSuccessHandler loginSuccessHandler;
     private final UserServiceImpl userService;
 
-    public WebSecurityConfig(SuccessUserHandler successUserHandler, UserServiceImpl userService) {
-        this.successUserHandler = successUserHandler;
+    public WebSecurityConfig(LoginSuccessHandler successUserHandler, UserServiceImpl userService) {
+        this.loginSuccessHandler = successUserHandler;
         this.userService = userService;
     }
     @Override
@@ -30,7 +30,7 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().successHandler(successUserHandler)
+                .formLogin().successHandler(loginSuccessHandler)
                 .and()
                 .logout()
                 .permitAll()

@@ -24,5 +24,4 @@ public class UsersController {
                 principal.getName()).get());
         return "myUser";
     }
-
 }
