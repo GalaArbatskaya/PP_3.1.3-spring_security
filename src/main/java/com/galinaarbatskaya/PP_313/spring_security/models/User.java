@@ -3,7 +3,6 @@ package com.galinaarbatskaya.PP_313.spring_security.models;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
@@ -16,7 +15,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Entity
-@Table
+@Table(name = "users")
 
 public class User implements UserDetails {
     @Id
@@ -97,6 +96,7 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return false;
     }
+
     public long getId() {
         return id;
     }
