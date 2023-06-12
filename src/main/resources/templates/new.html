@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en"xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
   <title>New user</title>
 </head>
 <body>
 
-<form th:method="POST" th:action="@{/}" th:object="${user}">
+<form th:method="POST" th:action="@{/admin}" th:object="${user}">
   <label for="name">Enter name: </label>
   <input type="text" th:field="*{name}" id="name"/>
   <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
@@ -18,6 +18,16 @@
   <label for="email">Enter email: </label>
   <input type="text" th:field="*{email}" id="email"/>
   <div style="color:red"  th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email error</div>
+  <br/>
+  <br/>
+  <label for="email">Enter username: </label>
+  <input type="text" th:field="*{username}" id="username"/>
+  <div style="color:red"  th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username error</div>
+  <br/>
+  <br/>
+  <label for="password">Enter password:</label>
+  <input type="text" th:field="*{password}" id="password"/>
+  <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password error</div>
   <br/>
   <input type="submit" value="Create!"/>
 </form>
